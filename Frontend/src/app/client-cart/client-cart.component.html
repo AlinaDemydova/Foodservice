@@ -1,0 +1,83 @@
+<div style="min-height: calc(100% - 220px);">
+
+        <div class="container">
+          <h1>Your cart</h1>
+        </div>
+        <div class="container"><hr></div>
+        <div *ngFor="let itemInCart of productsInCart" class="container itemInCart">
+
+                <div class="d-flex" style="justify-content: space-between;">
+                    <h3>
+                        <a href="#" routerLink="/client/menu/{{itemInCart.id}}">{{itemInCart.name}}</a>
+                        <br>
+                        <span class="price">Price <span>{{itemInCart.price}}</span> грн.</span>
+                    </h3>
+                    <div class="d-flex">
+                        <button class="minus_btn" (click)='removeOne(itemInCart.id)'><i class="material-icons" style="margin-right: 5px;">remove</i></button>
+                        <input min="1"  type="number" style=" text-align: center;"
+                        [(ngModel)]='itemInCart.quantity'
+                        (ngModelChange)="calculateTotal($event); calculateFirstSum()">
+                        <button class="plus_btn" (click)='addOne(itemInCart.id)'><i class="material-icons" style="margin-right: 5px;">add</i></button>
+                    </div>
+                    <div class="price subtotal">
+                        <span class="" *ngIf="itemInCart.totalItem" >{{itemInCart.totalItem}}</span> UAH
+                    </div>
+                    <button class='close_btn' (click)='deleteProduct(itemInCart.id, this.locStorageCart.localStorageName)'>
+                        <i class="material-icons" style="margin-right: 5px;">delete_sweep</i>
+                    </button>
+                </div>
+
+            <hr>
+        </div>
+
+        <div *ngIf="total" class="container d-flex total">
+          <div>
+            Total sum: <span>{{total}}</span> UAH
+            <br>
+            <button mat-raised-button
+            color="primary" class="btn_make-order" [ngClass]="{'dnone': !isNone}" (click)="createOrderForm()">Make order</button>
+          </div>
+      </div><br>
+
+      <div class="container" [ngClass]="{'dnone': isNone}">
+        <mat-card>
+            <form (submit)="onSaveOrder(orderForm)" #orderForm="ngForm">
+                <mat-form-field class="example-full-width">
+                  <input matInput ngModel
+                          name="customername"
+                          #customername="ngModel"
+                          placeholder="Enter your name"
+                          required>
+                  <mat-error *ngIf="customername.invalid">Please, enter your name.</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput ngModel
+                          name="customerphone"
+                          #customerphone="ngModel"
+                          placeholder="Enter your phone"
+                          required>
+                  <mat-error *ngIf="customername.invalid">Please, enter your phone.</mat-error>
+                </mat-form-field>
+                <br>
+                <p>Please, select your pay method:</p>
+                <div *ngFor="let pay of pays">
+                  <input
+                  type="radio"
+                  name="payMethods"
+                  value="{{pay}}"
+                  (change)="radioChangeHandler($event)" >
+                  {{pay}}
+                </div><br>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    class="btn_make-order">Send order</button>
+            </form>
+        </mat-card>
+      </div>
+
+</div>
+
+

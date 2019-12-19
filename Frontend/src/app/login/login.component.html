@@ -1,0 +1,26 @@
+<div style="min-height: calc(100% - 151px);">
+
+<mat-card>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+        <mat-form-field class="example-full-width">
+          <input matInput ngModel
+                  name="name" type="text"
+                  #nameLogin="ngModel"
+                  required
+                  placeholder="Enter your name">
+          <mat-error *ngIf="nameLogin.invalid">Please enter your name.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput ngModel
+                  name="password" type="password"
+                  #passwordLogin="ngModel"
+                  placeholder="Password">
+          <mat-error *ngIf="passwordLogin.invalid">Please enter a valid password.</mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+        <button mat-raised-button
+            color="accent" type="submit">Login</button>
+        </mat-card-actions>
+    </form>
+</mat-card>
+</div>

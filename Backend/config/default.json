@@ -1,0 +1,18 @@
+{
+    "Backend": {
+      "routes": {
+        "clientMenuURI": "/client/menu",
+        "adminMenuURI": "/admin/menulist",
+        "adminEmployeesURI": "/admin/employees",
+        "cartOrderURI": "/client/cart",
+        "staffOrdersQueueURI": "/staff/ordersqueue"
+      },
+      "dbconnect": {
+        "mongoURI": "mongodb://localhost/foodservice"
+      },
+      "connect": {
+        "envPort": "process.env.PORT",
+        "dutyPort": "3000"       
+      }
+    }
+  }

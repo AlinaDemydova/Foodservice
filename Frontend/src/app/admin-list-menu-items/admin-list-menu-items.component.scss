@@ -1,0 +1,56 @@
+mat-card,
+mat-expansion-panel {
+  width: 80%;
+  margin: auto;
+}
+.info-text {
+  text-align: center;
+}
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.addItem {
+  display: block;
+  margin: 30px auto 0;
+}
+.dnone {
+  display: none;
+}
+.reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.dnone {
+  display: none;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+.img-preview {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+
+  img {
+    height: 100%;
+  }
+}
+mat-panel-description {
+  display: block;
+}
+h1 {
+  font-size: large;
+}

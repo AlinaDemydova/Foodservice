@@ -1,0 +1,104 @@
+<div style="min-height: calc(100% - 151px);">
+<!------- Form  ------->
+<div class="container">
+  <button
+  mat-raised-button
+  color="primary"
+  class="addItem"
+  [ngClass]="{'dnone': !isNone}"
+  (click)="createOrderForm()">Add menu item</button>
+
+  <mat-card [ngClass]="{'dnone': isNone}">
+      <form (submit)="onSaveMeal()"
+            [formGroup]="form">
+          <mat-form-field class="example-full-width">
+            <input matInput
+            formControlName="name"
+                    placeholder="Name of meal"
+                    required>
+            <mat-error *ngIf="form.get('name').invalid">This delicious must have a name.</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <textarea matInput
+              formControlName="description"
+                        placeholder="Description"
+                        rows="4"
+                        required></textarea>
+           <mat-error *ngIf="form.get('description').invalid">Probably, it`s very tasty. Everyone wants to know details.</mat-error>
+          </mat-form-field>
+            <mat-form-field>
+            <input matInput
+            formControlName="ingredientsList"
+                    placeholder="List of ingridients"
+                    required>
+            <mat-error *ngIf="form.get('ingredientsList').invalid">Tell a secret: what is it made of?</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+            formControlName="weight"
+                    type="number"
+                    placeholder="Weight"
+                    required [min]="1">
+            <mat-error *ngIf="form.get('weight').invalid">Are you sure it weight less air?</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+            formControlName="price"
+                    placeholder="Price"
+                    required [min]="1">
+            <mat-error *ngIf="form.get('price').invalid">You can`t give this masterpiece of culinary art for free.</mat-error>
+          </mat-form-field>
+          <div style="display: flex;">
+            <div class="img-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+              <img [src]="imagePreview" alt="form.value.name">
+            </div>
+            <div>
+              <button mat-stroked-button type="button"
+              (click)='filePicker.click()'>Pick image</button>
+              <input type="file" #filePicker (change)="onImagePicked($event)">
+            </div>
+          </div>
+
+          <br>
+          <button
+              mat-raised-button
+              color="primary"
+              type="submit">Save meal</button>
+      </form>
+  </mat-card>
+</div>
+<!------- Form  ------->
+<br>
+<br>
+<!------- Accordeon panel ------->
+<div [ngClass]="{'dnone': !isNone}">
+    <mat-accordion class="reverse" multi="true" *ngIf="meals.length > 0">
+        <mat-expansion-panel *ngFor="let meal of meals">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h1>{{meal.name}}</h1>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            <img [src]="meal.imagePath" [alt]="meal.name">
+          </mat-panel-description>
+          <mat-panel-description>
+            <p><b>Description: </b>{{meal.description}}</p>
+            <p><b>List of ingredients: </b>{{meal.ingredientsList}}</p>
+            <p><b>Weight: </b>{{meal.weight}} gr.</p>
+            <p><b>Price: </b>{{meal.price}} UAH</p>
+          </mat-panel-description>
+            <mat-action-row>
+                <a mat-button color="primary" [routerLink]="['/admin/menulist/' + meal.id]">EDIT</a>
+                <!-- <button mat-button color="primary">EDIT</button> -->
+                <button mat-button color="warn" (click)="onDelete(meal.id)">DELETE</button>
+              </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>
+
+  <!------- /Accordeon panel ------->
+  <p class="mat-body-1 info-text" *ngIf="meals.length === 0">No meals there.</p>
+  <br><br><br>
+
+</div>

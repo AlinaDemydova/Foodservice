@@ -1,0 +1,28 @@
+<div style="min-height: calc(100% - 151px);">
+      <mat-card class="example-card container">
+        <mat-card-header>
+          <mat-card-title>{{transformDate(order?.orderBirth)}}</mat-card-title>
+          <mat-card-title>Status: {{order?.status}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngFor="let item of order?.listItems" class="listOfMeals">
+                <p>Meal: <b>{{item.name}}</b></p>
+                <p>Quantity: <b>{{item.quantity}}</b></p>
+                <p>Price: <b>{{item.price}}</b></p>
+            </div>
+            <hr>
+            <div class="listOfMeals">
+                <p>Total quantity: <b>{{order?.totalQuantity}}</b></p>
+                <p>Total price: <b>{{order?.totalPrice}}</b></p>
+            </div>
+          <p><b>Customer:</b> {{order?.customerName}}</p>
+          <p><b>Phone:</b> {{order?.customerPhone}}</p>
+          <p><b>Pay method:</b> {{order?.pay}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="changeStatus(order)" *ngIf="order?.status !== 'CLOSED'">{{order?.commandButton}}</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
+
+

@@ -1,0 +1,16 @@
+.container {
+  width: 70%;
+  margin: auto;
+}
+.listOfMeals {
+  display: flex;
+  justify-content: space-around;
+
+  p {
+    width: 25%;
+  }
+}
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

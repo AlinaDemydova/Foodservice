@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  width: 90%;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
+}
+.example-card {
+  width: 25%;
+  margin: 1%;
+}

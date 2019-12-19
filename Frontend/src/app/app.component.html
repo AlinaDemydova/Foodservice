@@ -1,0 +1,77 @@
+<!--------Navbar for clients------------>
+<mat-toolbar *ngIf="this.router.url.slice(0, 8) == '/client/'">
+    <mat-toolbar-row class="container" style="justify-content: flex-end;">
+      <button
+        mat-raised-button color="primary"
+        routerLink="/staff/ordersqueue"
+        routerLinkActive="active">Log In Staff</button>
+      <a
+        mat-flat-button
+        routerLink="/admin/menulist"
+        routerLinkActive="active"
+        style="margin: auto 10px;">Log In Admin</a>
+        <!-- <a mat-flat-button color="accent" routerLink="/login"
+        style="margin: auto 10px;">Login</a> -->
+    </mat-toolbar-row>
+    <mat-toolbar-row class="container" style="justify-content: space-between">
+      <button
+        mat-raised-button color="primary"
+        routerLink="/client/menu"
+        routerLinkActive="active">Menu</button>
+      <button
+        mat-icon-button color="primary"
+        aria-label="Example icon-button with a shopping_cart icon"
+        routerLink="/client/cart"
+        >
+        <mat-icon matBadge="{{quantitySum}}" matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!--------/Navbar for clients------------>
+<!--------Navbar for admin------------>
+<mat-toolbar *ngIf="this.router.url.slice(0, 7) == '/admin/'">
+  <mat-toolbar-row class="container" style="justify-content: space-between">
+      <button
+      mat-raised-button color="primary"
+      routerLink="/admin/menulist"
+      routerLinkActive="active">Edit menu</button>
+      <button
+      mat-raised-button color="primary"
+      routerLink="/admin/employees"
+      routerLinkActive="active">Employee</button>
+      <button
+      mat-raised-button color="primary"
+      routerLink="/client/menu"
+      routerLinkActive="active">Admin Log Out</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!--------/Navbar for admin------------>
+<!--------Navbar for staff------------>
+<mat-toolbar *ngIf="this.router.url.slice(0, 7) == '/staff/'">
+  <mat-toolbar-row class="container" style="justify-content: space-between">
+      <button
+      mat-raised-button color="primary"
+      routerLink="/staff/ordersqueue"
+      routerLinkActive="active">Queue of orders</button>
+      <button
+      mat-raised-button color="primary"
+      routerLink="/client/menu"
+      routerLinkActive="active">Staff Log Out</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!--------/Navbar for staff------------>
+
+
+<router-outlet></router-outlet>
+
+
+<!--------Footer------------>
+<footer class="footer">
+  <hr>
+  <div class="container">
+    <p>Adress</p>
+    <p>Phone</p>
+    <p>Facebook</p>
+  </div>
+</footer>
+<!--------/Footer------------>

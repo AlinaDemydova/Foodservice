@@ -1,0 +1,117 @@
+ $mainColorRed: #f85969;
+
+@mixin button-reset {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+.d-flex {
+  display: flex;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+.headers {
+  justify-content: space-between;
+}
+
+button {
+	@include button-reset;
+	text-transform: uppercase;
+	color: green;
+}
+.btn_make-order {
+  padding: 0 16px;;
+}
+input[type="number"] {
+	margin: 0;
+	width: 64px;
+	height: 41px;
+	padding-left: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.total {
+  justify-content: flex-end;
+  font-weight: 600;
+  span {
+    color: $mainColorRed;
+    font-weight: 600;
+  }
+  div {
+    margin-right: 30px;
+  }
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  width: 50%;
+  margin: 0 20px;
+}
+.subtotal {
+  margin: auto 20px;
+}
+.itemInCart {
+    .price {
+      font-size: 16px;
+      font-weight: 600;
+      span {
+        color: $mainColorRed;
+      }
+    .close_btn, .minus_btn, .plus_btn {
+      padding: 0;
+      border: none;
+      width: 41px;
+      height: 41px;
+    }
+    .close_btn {
+          color: green;
+    }
+    .minus_btn, .plus_btn {
+      color: green;
+      font-size: 28px;
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+hr {
+	background-color: $mainColorRed;
+	height: 2px;
+}
+
+input[type="text"], textarea {
+	width: 300px;
+	border: 2px solid black;
+	border-radius: 5px;
+  margin: auto;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+label {
+  margin-top: 20px;
+}
+.example-radio-button {
+  margin: 5px;
+}
+
+.dnone {
+  display: none;
+}

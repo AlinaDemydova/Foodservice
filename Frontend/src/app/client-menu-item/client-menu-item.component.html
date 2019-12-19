@@ -1,0 +1,25 @@
+<div style="min-height: calc(100% - 220px);">
+    <div class="container"  *ngFor="let meal of meals">
+      <mat-card class="example-card" *ngIf="meal.id == myId">
+        <mat-card-header>
+          <mat-card-title>{{meal.name}}</mat-card-title>
+        </mat-card-header>
+        <img src="{{meal.imagePath}}" alt="{{meal.name}}">
+        <mat-card-content>
+          <p><b>Weight: </b>{{meal.weight}} gr.</p>
+          <p><b>List of ingredients: </b>{{meal.ingredientsList}}</p>
+          <p><b>Price: </b>{{meal.price}} UAH</p>
+          <p><b>Description: </b>{{meal.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button *ngIf="!this.inCart" mat-raised-button color="warn" (click)="addToCart(meal, this.locStorageCart.localStorageName)">ADD TO CART</button>
+          <div *ngIf="this.inCart">
+            <span>Meal is in cart</span>
+            <button mat-raised-button color="warn" (click)="this.router.navigateByUrl('/client/cart')">GO TO CART</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+</div>
+
+
